@@ -29,9 +29,9 @@ collections: [Users, Media, Projects, ProjectCategories, ProjectTypes],
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
-  }),
+db: mongooseAdapter({
+  url: process.env.MONGODB_URI || '',
+}),
   sharp,
 cors: ['http://localhost:3001'],
 
