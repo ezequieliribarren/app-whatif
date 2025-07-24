@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 import { Projects } from './collections/Projects'
 import { ProjectCategories } from './collections/projectCategories'
 import { ProjectTypes } from './collections/proyectTypes'
+import { TeamMembers } from './collections/teamMembers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes],
+  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes, TeamMembers],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -33,10 +34,7 @@ export default buildConfig({
     url: process.env.MONGODB_URI || '',
   }),
   sharp,
-  cors: [
-    'http://69.62.110.55:3001',
-    'http://localhost:3001',
-  ],
+  cors: ['http://localhost:3001'],
   plugins: [
     // payloadCloudPlugin(),
     // storage-adapter-placeholder

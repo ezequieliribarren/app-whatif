@@ -72,6 +72,7 @@ export interface Config {
     projects: Project;
     projectCategories: ProjectCategory;
     projectTypes: ProjectType;
+    'team-members': TeamMember;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -83,6 +84,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     projectCategories: ProjectCategoriesSelect<false> | ProjectCategoriesSelect<true>;
     projectTypes: ProjectTypesSelect<false> | ProjectTypesSelect<true>;
+    'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -237,6 +239,22 @@ export interface ProjectType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members".
+ */
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  /**
+   * Número para ordenar manualmente los miembros en el front
+   */
+  order?: number | null;
+  image: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -261,6 +279,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projectTypes';
         value: string | ProjectType;
+      } | null)
+    | ({
+        relationTo: 'team-members';
+        value: string | TeamMember;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -383,6 +405,18 @@ export interface ProjectCategoriesSelect<T extends boolean = true> {
 export interface ProjectTypesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members_select".
+ */
+export interface TeamMembersSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  order?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
