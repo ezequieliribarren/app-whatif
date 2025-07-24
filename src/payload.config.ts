@@ -23,18 +23,27 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-collections: [Users, Media, Projects, ProjectCategories, ProjectTypes],
+  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-db: mongooseAdapter({
-  url: process.env.MONGODB_URI || '',
-}),
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URI || '',
+  }),
   sharp,
-cors: ['http://localhost:3001'],
+  cors: ['http://localhost:3001'],
 
+  express: {
+    json: {
+      limit: '25mb',
+    },
+    urlencoded: {
+      extended: true,
+      limit: '25mb',
+    },
+  },
 
   plugins: [
     // payloadCloudPlugin(),
