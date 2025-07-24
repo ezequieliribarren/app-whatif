@@ -33,7 +33,10 @@ export default buildConfig({
     url: process.env.MONGODB_URI || '',
   }),
   sharp,
-  cors: ['http://localhost:3001'],
+  cors: [
+    'http://69.62.110.55:3001',
+    'http://localhost:3001',
+  ],
   plugins: [
     // payloadCloudPlugin(),
     // storage-adapter-placeholder
