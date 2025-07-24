@@ -34,17 +34,6 @@ export default buildConfig({
   }),
   sharp,
   cors: ['http://localhost:3001'],
-
-  express: {
-    json: {
-      limit: '25mb',
-    },
-    urlencoded: {
-      extended: true,
-      limit: '25mb',
-    },
-  },
-
   plugins: [
     // payloadCloudPlugin(),
     // storage-adapter-placeholder
