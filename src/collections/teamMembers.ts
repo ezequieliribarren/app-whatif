@@ -42,5 +42,10 @@ export const TeamMembers: CollectionConfig = {
       relationTo: 'media',
       required: true,
     },
+        {
+      name: 'detail',
+      type: 'richText',
+      label: 'Detalle del miembro',
+    },
   ],
 }
