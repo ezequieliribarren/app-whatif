@@ -44,7 +44,7 @@ export const TeamMembers: CollectionConfig = {
     },
         {
       name: 'detail',
-      type: 'richText',
+      type: 'textarea',
       label: 'Detalle del miembro',
     },
   ],

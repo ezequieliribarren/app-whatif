@@ -250,6 +250,21 @@ export interface TeamMember {
    */
   order?: number | null;
   image: string | Media;
+  detail?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -417,6 +432,7 @@ export interface TeamMembersSelect<T extends boolean = true> {
   role?: T;
   order?: T;
   image?: T;
+  detail?: T;
   updatedAt?: T;
   createdAt?: T;
 }
