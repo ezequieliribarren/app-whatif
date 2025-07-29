@@ -1,9 +1,6 @@
 import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
 import React from 'react'
-import { fileURLToPath } from 'url'
-
+import { getPayload } from 'payload'
 import config from '@/payload.config'
 import './styles.css'
 
@@ -13,22 +10,16 @@ export default async function HomePage() {
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
   return (
     <div className="home">
       <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="http://69.62.110.55/api/media/file/logo.png"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Whatif - Construimos imaginarios colectivos que configuran nuestro cotidiano. </h1>}
+        <img className='img-logo'
+          alt="Logo"
+          src="https://res.cloudinary.com/dkkrcphjh/image/upload/v1753790361/logo_f24idr.png"
+        />
+        <h2>Construimos imaginarios colectivos que configuran nuestro cotidiano.</h2>
         {user && <h1>Bienvenido, {user.email}</h1>}
+
         <div className="links">
           <a
             className="admin"

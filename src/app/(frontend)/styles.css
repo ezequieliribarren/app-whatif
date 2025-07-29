@@ -6,6 +6,19 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Fustat';
+  src: url('../../public/Fustat-Medium.ttf') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  font-family: Fustat;
+}
+
 html {
   font-size: 18px;
   line-height: 32px;
@@ -34,17 +47,11 @@ body {
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
 
 h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
+  font-size: 54px;
   font-weight: bold;
+  color: black;
 
   @media (max-width: 1024px) {
     margin: 24px 0;
@@ -63,8 +70,25 @@ h1 {
   }
 }
 
+.img-logo {
+  width: 350px;
+  object-fit: contain;
+  margin-bottom: 34px;
+}
+
+h2{
+  font-family: Fustat;
+  color: black;
+  font-weight: 300;
+  margin-bottom: 50px;
+  font-size: 24px !important;
+  font-style: italic;
+}
+
+
 p {
   margin: 24px 0;
+  color: black;
 
   @media (max-width: 1024px) {
     margin: calc(var(--base) * 0.75) 0;
@@ -73,7 +97,7 @@ p {
 
 a {
   color: currentColor;
-
+  color: black;
   &:focus {
     opacity: 0.8;
     outline: none;
@@ -85,9 +109,6 @@ a {
   }
 }
 
-svg {
-  vertical-align: middle;
-}
 
 .home {
   display: flex;
@@ -152,6 +173,7 @@ svg {
 
     p {
       margin: 0;
+      color: black;
     }
 
     .codeLink {
