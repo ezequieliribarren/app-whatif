@@ -15,7 +15,7 @@ export const ProjectCategories: CollectionConfig = {
   fields: [
     {
       name: 'name',
-      type: 'text',
+      type: 'text', 
       required: true,
     },
     {

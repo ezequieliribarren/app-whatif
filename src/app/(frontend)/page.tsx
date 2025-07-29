@@ -23,12 +23,12 @@ export default async function HomePage() {
           <Image
             alt="Payload Logo"
             height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
+            src="http://69.62.110.55/api/media/file/logo.png"
             width={65}
           />
         </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
+        {!user && <h1>Whatif - Construimos imaginarios colectivos que configuran nuestro cotidiano. </h1>}
+        {user && <h1>Bienvenido, {user.email}</h1>}
         <div className="links">
           <a
             className="admin"
@@ -36,23 +36,9 @@ export default async function HomePage() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
+            Ir al panel
           </a>
         </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
       </div>
     </div>
   )
