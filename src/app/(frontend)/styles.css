@@ -49,9 +49,9 @@ body {
 
 
 h1 {
-  font-size: 54px;
-  font-weight: bold;
+  font-size: 34px;
   color: black;
+  font-family: Fustat;
 
   @media (max-width: 1024px) {
     margin: 24px 0;
