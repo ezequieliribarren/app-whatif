@@ -73,6 +73,7 @@ export interface Config {
     projectCategories: ProjectCategory;
     projectTypes: ProjectType;
     'team-members': TeamMember;
+    'former-members': FormerMember;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +86,7 @@ export interface Config {
     projectCategories: ProjectCategoriesSelect<false> | ProjectCategoriesSelect<true>;
     projectTypes: ProjectTypesSelect<false> | ProjectTypesSelect<true>;
     'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
+    'former-members': FormerMembersSelect<false> | FormerMembersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -270,6 +272,21 @@ export interface TeamMember {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "former-members".
+ */
+export interface FormerMember {
+  id: string;
+  name: string;
+  /**
+   * Número para ordenar manualmente los miembros en el front
+   */
+  order?: number | null;
+  image: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -298,6 +315,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'team-members';
         value: string | TeamMember;
+      } | null)
+    | ({
+        relationTo: 'former-members';
+        value: string | FormerMember;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -433,6 +454,17 @@ export interface TeamMembersSelect<T extends boolean = true> {
   order?: T;
   image?: T;
   detail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "former-members_select".
+ */
+export interface FormerMembersSelect<T extends boolean = true> {
+  name?: T;
+  order?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
