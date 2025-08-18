@@ -27,6 +27,13 @@ export const TeamMembers: CollectionConfig = {
       required: true,
     },
 
+     {
+      name: 'Estudios',
+      label: 'estudios',
+      type: 'text',
+      required: true,
+    },
+
     {
   name: 'order',
   type: 'number',

@@ -74,6 +74,7 @@ export interface Config {
     projectTypes: ProjectType;
     'team-members': TeamMember;
     'former-members': FormerMember;
+    dossier: Dossier;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -87,6 +88,7 @@ export interface Config {
     projectTypes: ProjectTypesSelect<false> | ProjectTypesSelect<true>;
     'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
     'former-members': FormerMembersSelect<false> | FormerMembersSelect<true>;
+    dossier: DossierSelect<false> | DossierSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -94,8 +96,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'video-inicial': VideoInicial;
+  };
+  globalsSelect: {
+    'video-inicial': VideoInicialSelect<false> | VideoInicialSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -287,6 +293,16 @@ export interface FormerMember {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dossier".
+ */
+export interface Dossier {
+  id: string;
+  archivo: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -319,6 +335,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'former-members';
         value: string | FormerMember;
+      } | null)
+    | ({
+        relationTo: 'dossier';
+        value: string | Dossier;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -470,6 +490,15 @@ export interface FormerMembersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dossier_select".
+ */
+export interface DossierSelect<T extends boolean = true> {
+  archivo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -499,6 +528,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "video-inicial".
+ */
+export interface VideoInicial {
+  id: string;
+  video: string | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "video-inicial_select".
+ */
+export interface VideoInicialSelect<T extends boolean = true> {
+  video?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
