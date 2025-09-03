@@ -1,11 +1,10 @@
-// src/collections/TeamMembers.ts
 import type { CollectionConfig } from 'payload'
 
-export const FormerMembers: CollectionConfig = {
-    slug: 'former-members',
+export const SelectedClients: CollectionConfig = {
+    slug: 'selected-clients',
     labels: {
-        singular: 'Antiguos miembros del equipo',
-        plural: 'Old Members',
+        singular: 'Clientes Seleccionados',
+        plural: 'Selected Clients',
     },
     admin: {
         useAsTitle: 'name',
@@ -24,13 +23,6 @@ export const FormerMembers: CollectionConfig = {
             name: 'link',
             label: 'Link',
             type: 'text',
-            required: true,
-        },
-        {
-            name: 'image',
-            label: 'Foto',
-            type: 'upload',
-            relationTo: 'media',
             required: true,
         }
     ],

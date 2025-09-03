@@ -15,6 +15,7 @@ import { ProjectTypes } from './collections/proyectTypes'
 import { TeamMembers } from './collections/teamMembers'
 import { FormerMembers } from './collections/formerMembers'
 import { Dossier } from './collections/Dossier'
+import { SelectedClients } from './collections/selectedClients'
 import { VideoInicial } from './collections/videoInicial'
 
 const filename = fileURLToPath(import.meta.url)
@@ -27,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes, TeamMembers, FormerMembers, Dossier],  
+  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes, TeamMembers, FormerMembers, Dossier, SelectedClients],  
   globals: [
     VideoInicial,
   ],
