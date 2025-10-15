@@ -1,11 +1,11 @@
 import type { CollectionConfig } from 'payload'
-import slugify from 'slugify'; // npm install slugify
-
+import slugify from 'slugify' // npm install slugify
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
+    defaultColumns: ['title', 'featured', 'order', 'date'], // muestra las columnas clave en el admin
   },
   access: {
     read: () => true,
@@ -14,11 +14,11 @@ export const Projects: CollectionConfig = {
     beforeValidate: [
       async ({ data }) => {
         if (data?.title && !data?.slug) {
-          data.slug = slugify(data.title, { lower: true, strict: true });
+          data.slug = slugify(data.title, { lower: true, strict: true })
         }
-        return data;
-      }
-    ]
+        return data
+      },
+    ],
   },
   fields: [
     {
@@ -39,7 +39,21 @@ export const Projects: CollectionConfig = {
       name: 'featured',
       type: 'checkbox',
       label: 'Proyecto destacado',
+      defaultValue: false,
     },
+
+    // 👉 Nuevo campo de orden manual (solo visible si featured = true)
+    {
+      name: 'order',
+      label: 'Orden destacado',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        condition: (data) => data.featured === true, // solo visible si está destacado
+        description: 'Define el orden manual de los proyectos destacados (menor = primero)',
+      },
+    },
+
     {
       name: 'date',
       type: 'date',
@@ -105,7 +119,6 @@ export const Projects: CollectionConfig = {
         },
       ],
     },
-
     {
       name: 'text',
       type: 'richText',

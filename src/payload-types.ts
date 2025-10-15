@@ -75,6 +75,7 @@ export interface Config {
     'team-members': TeamMember;
     'former-members': FormerMember;
     dossier: Dossier;
+    'selected-clients': SelectedClient;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -89,6 +90,7 @@ export interface Config {
     'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
     'former-members': FormerMembersSelect<false> | FormerMembersSelect<true>;
     dossier: DossierSelect<false> | DossierSelect<true>;
+    'selected-clients': SelectedClientsSelect<false> | SelectedClientsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -253,6 +255,7 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
+  Estudios: string;
   /**
    * Número para ordenar manualmente los miembros en el front
    */
@@ -283,10 +286,7 @@ export interface TeamMember {
 export interface FormerMember {
   id: string;
   name: string;
-  /**
-   * Número para ordenar manualmente los miembros en el front
-   */
-  order?: number | null;
+  link: string;
   image: string | Media;
   updatedAt: string;
   createdAt: string;
@@ -298,6 +298,17 @@ export interface FormerMember {
 export interface Dossier {
   id: string;
   archivo: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "selected-clients".
+ */
+export interface SelectedClient {
+  id: string;
+  name: string;
+  link: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -339,6 +350,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'dossier';
         value: string | Dossier;
+      } | null)
+    | ({
+        relationTo: 'selected-clients';
+        value: string | SelectedClient;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -471,6 +486,7 @@ export interface ProjectTypesSelect<T extends boolean = true> {
 export interface TeamMembersSelect<T extends boolean = true> {
   name?: T;
   role?: T;
+  Estudios?: T;
   order?: T;
   image?: T;
   detail?: T;
@@ -483,7 +499,7 @@ export interface TeamMembersSelect<T extends boolean = true> {
  */
 export interface FormerMembersSelect<T extends boolean = true> {
   name?: T;
-  order?: T;
+  link?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -494,6 +510,16 @@ export interface FormerMembersSelect<T extends boolean = true> {
  */
 export interface DossierSelect<T extends boolean = true> {
   archivo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "selected-clients_select".
+ */
+export interface SelectedClientsSelect<T extends boolean = true> {
+  name?: T;
+  link?: T;
   updatedAt?: T;
   createdAt?: T;
 }
