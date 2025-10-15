@@ -1,4 +1,3 @@
-// src/globals/VideoInicial.ts
 import type { GlobalConfig } from 'payload'
 
 export const VideoInicial: GlobalConfig = {
@@ -14,6 +13,11 @@ export const VideoInicial: GlobalConfig = {
       type: 'upload',
       relationTo: 'media',
       required: true,
+      filterOptions: {
+        mimeType: {
+          in: ['video/mp4', 'video/webm', 'video/ogg'], // 🔸 solo tipos de video
+        },
+      },
     },
   ],
 }

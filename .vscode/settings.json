@@ -36,5 +36,11 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     }
-  }
+  },
+  "github.copilot.enable": {
+    "plaintext": true,
+    "markdown": true,
+    "scminput": true
+  },
+  "github.copilot.nextEditSuggestions.enabled": true
 }
