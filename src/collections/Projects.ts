@@ -128,13 +128,24 @@ export const Projects: CollectionConfig = {
       label: 'Descripción del proyecto (Español)',
     },
 
-    // 🟦 Nueva descripción en inglés
+    // 🟦 Descripción en inglés
     {
       name: 'text_en',
       type: 'richText',
       label: 'Project Description (English)',
       admin: {
         description: 'Versión en inglés del texto descriptivo del proyecto.',
+      },
+    },
+
+    // 🟣 Campo de título editable para el bloque de detalle técnico
+    {
+      name: 'campoDetail',
+      type: 'text',
+      label: 'Nombre del bloque de detalle técnico',
+      admin: {
+        placeholder: 'Ej: Detalle técnico, Especificaciones, Observaciones...',
+        description: 'Define el nombre o título que aparecerá sobre el contenido de detalle técnico.',
       },
     },
 
