@@ -176,6 +176,10 @@ export interface Project {
   title: string;
   slug: string;
   featured?: boolean | null;
+  /**
+   * Define el orden manual de los proyectos destacados (menor = primero)
+   */
+  order?: number | null;
   date?: string | null;
   categories?: (string | ProjectCategory)[] | null;
   types?: (string | ProjectType)[] | null;
@@ -438,6 +442,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   featured?: T;
+  order?: T;
   date?: T;
   categories?: T;
   types?: T;

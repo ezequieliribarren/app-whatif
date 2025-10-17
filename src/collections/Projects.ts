@@ -5,7 +5,7 @@ export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'featured', 'order', 'date'], // muestra las columnas clave en el admin
+    defaultColumns: ['title', 'featured', 'order', 'date'], // columnas visibles en el panel admin
   },
   access: {
     read: () => true,
@@ -13,6 +13,7 @@ export const Projects: CollectionConfig = {
   hooks: {
     beforeValidate: [
       async ({ data }) => {
+        // genera slug automáticamente si no existe
         if (data?.title && !data?.slug) {
           data.slug = slugify(data.title, { lower: true, strict: true })
         }
@@ -42,7 +43,7 @@ export const Projects: CollectionConfig = {
       defaultValue: false,
     },
 
-    // 👉 Nuevo campo de orden manual (solo visible si featured = true)
+    // 👉 Campo para definir el orden manual de los proyectos destacados
     {
       name: 'order',
       label: 'Orden destacado',
@@ -119,11 +120,25 @@ export const Projects: CollectionConfig = {
         },
       ],
     },
+
+    // 🟢 Descripción en español
     {
       name: 'text',
       type: 'richText',
-      label: 'Descripción del proyecto',
+      label: 'Descripción del proyecto (Español)',
     },
+
+    // 🟦 Nueva descripción en inglés
+    {
+      name: 'text_en',
+      type: 'richText',
+      label: 'Project Description (English)',
+      admin: {
+        description: 'Versión en inglés del texto descriptivo del proyecto.',
+      },
+    },
+
+    // 🟣 Detalle técnico u observaciones
     {
       name: 'detail',
       type: 'richText',
