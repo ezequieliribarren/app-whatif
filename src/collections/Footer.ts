@@ -7,7 +7,7 @@ export const Footer: CollectionConfig = {
     plural: 'Footer',
   },
   admin: {
-    useAsTitle: 'direccion', // muestra la dirección como título en el panel
+    useAsTitle: 'direccion',
   },
   access: {
     read: () => true,
@@ -19,7 +19,17 @@ export const Footer: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        placeholder: 'Ej: Av. Corrientes 1234, Buenos Aires, Argentina',
+        placeholder: 'Ej: Av. Corrientes 1234, CABA',
+      },
+    },
+    {
+      name: 'mapsLink',
+      label: 'Link de Google Maps',
+      type: 'text',
+      required: false,
+      admin: {
+        placeholder: 'https://maps.google.com/...',
+        description: 'Pegá aquí el enlace completo de Google Maps',
       },
     },
     {
@@ -28,7 +38,7 @@ export const Footer: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        placeholder: 'Ej: +54 11 1234-5678',
+        placeholder: '',
       },
     },
     {
@@ -37,7 +47,16 @@ export const Footer: CollectionConfig = {
       type: 'email',
       required: true,
       admin: {
-        placeholder: 'Ej: contacto@flaks.com.ar',
+        placeholder: '',
+      },
+    },
+    {
+      name: 'instagram',
+      label: 'Instagram',
+      type: 'text',
+      required: true,
+      admin: {
+        placeholder: '',
       },
     },
   ],
