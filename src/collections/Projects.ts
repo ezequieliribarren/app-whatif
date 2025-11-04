@@ -42,6 +42,12 @@ export const Projects: CollectionConfig = {
       label: 'Proyecto destacado',
       defaultValue: false,
     },
+        {
+      name: 'apagar',
+      type: 'checkbox',
+      label: 'Tildar para apagar proyecto (no se mostrará en la web)',
+      defaultValue: false,
+    },
 
     // 👉 Campo para definir el orden manual de los proyectos destacados
     {
@@ -154,6 +160,11 @@ export const Projects: CollectionConfig = {
       name: 'detail',
       type: 'richText',
       label: 'Detalle técnico u observaciones',
+    },
+    {
+      name: 'agency',
+      type: 'richText',
+      label: 'Detalle de agencia',
     },
   ],
 }
