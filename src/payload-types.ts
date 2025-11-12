@@ -76,6 +76,7 @@ export interface Config {
     'former-members': FormerMember;
     dossier: Dossier;
     'selected-clients': SelectedClient;
+    footer: Footer;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -91,6 +92,7 @@ export interface Config {
     'former-members': FormerMembersSelect<false> | FormerMembersSelect<true>;
     dossier: DossierSelect<false> | DossierSelect<true>;
     'selected-clients': SelectedClientsSelect<false> | SelectedClientsSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -176,6 +178,7 @@ export interface Project {
   title: string;
   slug: string;
   featured?: boolean | null;
+  apagar?: boolean | null;
   /**
    * Define el orden manual de los proyectos destacados (menor = primero)
    */
@@ -211,7 +214,44 @@ export interface Project {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Versión en inglés del texto descriptivo del proyecto.
+   */
+  text_en?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Define el nombre o título que aparecerá sobre el contenido de detalle técnico.
+   */
+  campoDetail?: string | null;
   detail?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  agency?: {
     root: {
       type: string;
       children: {
@@ -318,6 +358,23 @@ export interface SelectedClient {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  direccion: string;
+  /**
+   * Pegá aquí el enlace completo de Google Maps
+   */
+  mapsLink?: string | null;
+  telefono: string;
+  mail: string;
+  instagram: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -358,6 +415,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'selected-clients';
         value: string | SelectedClient;
+      } | null)
+    | ({
+        relationTo: 'footer';
+        value: string | Footer;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -442,6 +503,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   featured?: T;
+  apagar?: T;
   order?: T;
   date?: T;
   categories?: T;
@@ -460,7 +522,10 @@ export interface ProjectsSelect<T extends boolean = true> {
         id?: T;
       };
   text?: T;
+  text_en?: T;
+  campoDetail?: T;
   detail?: T;
+  agency?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -525,6 +590,19 @@ export interface DossierSelect<T extends boolean = true> {
 export interface SelectedClientsSelect<T extends boolean = true> {
   name?: T;
   link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  direccion?: T;
+  mapsLink?: T;
+  telefono?: T;
+  mail?: T;
+  instagram?: T;
   updatedAt?: T;
   createdAt?: T;
 }
