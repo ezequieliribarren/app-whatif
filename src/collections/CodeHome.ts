@@ -1,7 +1,7 @@
-import type { CollectionConfig } from 'payload'
-// 
-export const Home: CollectionConfig = {
-  slug: 'Home',
+import type { CollectionConfig } from 'payload';
+
+export const CodeHome: CollectionConfig = {
+  slug: 'code-home',
   labels: {
     singular: 'Home',
     plural: 'Home',
@@ -9,9 +9,11 @@ export const Home: CollectionConfig = {
   admin: {
     useAsTitle: 'titulo',
   },
+
   access: {
     read: () => true,
   },
+
   fields: [
     {
       name: 'titulo',
@@ -23,13 +25,13 @@ export const Home: CollectionConfig = {
       },
     },
     {
-      name: 'Subtitulo',
+      name: 'subtitulo',
       label: 'Subtítulo',
       type: 'text',
       required: false,
       admin: {
-        placeholder: 'Subtitulo de la página de inicio',
+        placeholder: 'Subtítulo de la página de inicio',
       },
-    }
-  ]
-}
+    },
+  ],
+};
