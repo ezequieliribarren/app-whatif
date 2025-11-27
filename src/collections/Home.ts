@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-
+// 
 export const Home: CollectionConfig = {
   slug: 'Home',
   labels: {
