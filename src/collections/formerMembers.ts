@@ -31,7 +31,7 @@ export const FormerMembers: CollectionConfig = {
             label: 'Foto',
             type: 'upload',
             relationTo: 'media',
-            required: true,
+            required: false,
         }
     ],
 }
