@@ -18,6 +18,7 @@ import { Dossier } from './collections/Dossier'
 import { SelectedClients } from './collections/selectedClients'
 import { VideoInicial } from './collections/videoInicial'
 import { Footer } from './collections/Footer'
+import { Home } from './collections/home'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,7 +30,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes, TeamMembers, FormerMembers, Dossier, SelectedClients, Footer],  
+  collections: [Users, Media, Projects, ProjectCategories, ProjectTypes, TeamMembers, FormerMembers, Dossier, SelectedClients, Home, Footer],  
   globals: [
     VideoInicial,
   ],
@@ -44,7 +45,5 @@ export default buildConfig({
   sharp,
   cors: ['http://localhost:3001'],
   plugins: [
-    // payloadCloudPlugin(),
-    // storage-adapter-placeholder
   ],
 })
