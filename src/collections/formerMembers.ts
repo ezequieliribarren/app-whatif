@@ -11,7 +11,7 @@ export const FormerMembers: CollectionConfig = {
         useAsTitle: 'name',
     },
     access: {
-        read: () => true,  // <-- permití lectura pública
+        read: () => true, 
     },
     fields: [
         {
@@ -24,7 +24,7 @@ export const FormerMembers: CollectionConfig = {
             name: 'link',
             label: 'Link',
             type: 'text',
-            required: true,
+            required: false,
         },
         {
             name: 'image',

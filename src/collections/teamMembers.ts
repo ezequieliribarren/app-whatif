@@ -10,7 +10,7 @@ export const TeamMembers: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
   },
-    access: {
+  access: {
     read: () => true,  // <-- permití lectura pública
   },
   fields: [
@@ -27,21 +27,27 @@ export const TeamMembers: CollectionConfig = {
       required: true,
     },
 
-     {
+    {
       name: 'Estudios',
       label: 'estudios',
       type: 'text',
       required: true,
     },
+    {
+      name: 'link',
+      label: 'Link',
+      type: 'text',
+      required: true,
+    },
 
     {
-  name: 'order',
-  type: 'number',
-  label: 'Orden',
-  admin: {
-    description: 'Número para ordenar manualmente los miembros en el front',
-  },
-},
+      name: 'order',
+      type: 'number',
+      label: 'Orden',
+      admin: {
+        description: 'Número para ordenar manualmente los miembros en el front',
+      },
+    },
     {
       name: 'image',
       label: 'Foto',
@@ -49,7 +55,7 @@ export const TeamMembers: CollectionConfig = {
       relationTo: 'media',
       required: true,
     },
-        {
+    {
       name: 'detail',
       type: 'richText',
       label: 'Detalle del miembro',
